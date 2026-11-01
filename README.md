@@ -4,7 +4,7 @@
 
 A local portfolio prototype that connects training schedules, enrollment, attendance, completion, simulated communications, and operational reporting for a fictional learning team.
 
-**Status: V1 P0 implemented and locally validated.** Uses **synthetic data / portfolio demo** only. No real employees, authentication, email delivery, or production deployment. See [validation evidence](docs/validation.md), including checks not performed. GitHub synchronization requires the owner's approval for this batch.
+**Status: V1 prototype; acceptance review in progress.** Uses **synthetic data / portfolio demo** only. No real employees, authentication, email delivery, or production deployment. See [validation evidence](docs/validation.md), including checks not performed.
 
 ![Actual local Overview, synthetic seed 42, business clock 2026-10-25](docs/screenshots/overview.jpg)
 
@@ -139,6 +139,7 @@ Tests cover constraints, two independent connections competing for one seat, rol
 ## Boundaries and roadmap
 
 - Public read-only mode opens SQLite read-only, blocks service writes, removes write forms and clock changes, and requires a prebuilt synthetic database. The fixed as-of is operator-configured.
+- [Public demo preparation](docs/public_demo.md) explains the reproducible pre-launch build and the local read-only preview. It does not publish anything.
 - **Deployment planned**. There is no public demo URL. Single-instance SQLite is not a production persistence or multi-user scale promise.
 - No uploads, real employee data, email/SMS, SSO, HRIS, SCORM/xAPI, hosted content or AI scoring. V1 does not evaluate people for employment or compliance decisions.
 - Known limits: no historic snapshots, no optimistic attendance edit-conflict detection, no multi-instance scheduling, no comprehensive accessibility audit. Fictional free-text input is permitted; there is no automated detector that guarantees text is synthetic.

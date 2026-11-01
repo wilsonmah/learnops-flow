@@ -1,5 +1,11 @@
 # Local validation record
 
+## 2026-11-01 follow-up
+
+Started from clean remote main `dfecf98` in a fresh task directory. A Python 3.12 virtual environment was installed from pinned requirements. The automated suite initially passed 39 tests, including the new reproducible public-preparation test; Ruff and formatting passed. A separate synthetic database was prepared with the new script (200 learners, six departments, eight courses, 24 sessions and 408 registrations); a local public-read-only server's health endpoint returned `ok`. Existing tests cover service-level read-only rejection, time boundaries, core workflow, mock processing, retries, report fixture and CSV.
+
+Computer Use was stopped before browser interaction because the Windows helper could not reliably determine the current browser URL. Consequently, the requested full manual walkthrough, manual keyboard navigation, browser accessibility/contrast review and new screenshots were not completed in this follow-up. Earlier screenshots are retained and are not represented as new. Automated Streamlit AppTest and service tests are not a substitute for those manual checks. No public deployment was attempted. The full acceptance remains open pending these checks and owner review.
+
 ## Context
 
 - Implementation based on repository main `f383f68fe2384ef1824d8903612cd9041fb4e9e2`. At validation time these changes were local and uncommitted; consult Git history for their subsequent synchronization.
