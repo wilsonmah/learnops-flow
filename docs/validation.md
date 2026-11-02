@@ -1,5 +1,9 @@
 # Local validation record
 
+## 2026-11-02 interface refresh
+
+Based on `ce785ff`, the Streamlit theme and presentation were updated locally. The full automated suite passed 39 tests in 31.13 seconds; Ruff and formatting checks passed. A local public-read-only overview was opened in Chrome and visually inspected with synthetic data: navigation, metric cards, captions and the demo/simulated-delivery notices were visible. This was an overview inspection, not a complete manual workflow, keyboard-only navigation test, mobile-device test or comprehensive accessibility audit. The theme uses static CSS and targets Streamlit's generated markup, which should be rechecked after Streamlit upgrades. Earlier README screenshots predate this refresh.
+
 ## 2026-11-01 follow-up
 
 Started from clean remote main `dfecf98` in a fresh task directory. A Python 3.12 virtual environment was installed from pinned requirements. The automated suite initially passed 39 tests, including the new reproducible public-preparation test; Ruff and formatting passed. A separate synthetic database was prepared with the new script (200 learners, six departments, eight courses, 24 sessions and 408 registrations); a local public-read-only server's health endpoint returned `ok`. Existing tests cover service-level read-only rejection, time boundaries, core workflow, mock processing, retries, report fixture and CSV.

@@ -10,7 +10,9 @@ A local portfolio prototype that connects training schedules, enrollment, attend
 
 **Status: V1 prototype; acceptance review in progress.** Uses **synthetic data / portfolio demo** only. No real employees, authentication, email delivery, or production deployment. See [validation evidence](docs/validation.md), including checks not performed.
 
-![Actual local Overview, synthetic seed 42, business clock 2026-10-25](docs/screenshots/overview.jpg)
+![Earlier local Overview, synthetic seed 42, business clock 2026-10-25](docs/screenshots/overview.jpg)
+
+The screenshots on this page were captured before the November 2026 interface refresh.
 
 ## The workflow
 

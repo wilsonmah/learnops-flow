@@ -18,6 +18,7 @@ from learning_ops.services.communications import (
 from learning_ops.services.completion import Completion
 from learning_ops.services.enrollment import Enrollment
 from learning_ops.services.scheduling import SESSION_FIELDS, Scheduling
+from learning_ops.ui.styles import APP_CSS
 
 AREAS = [
     "Overview",
@@ -100,14 +101,15 @@ def report_filters(settings, clock, prefix):
 
 
 def overview(settings, clock):
-    st.subheader("A clear view of learning operations")
-    st.write("Coordinate training, keep records consistent, and see what needs attention.")
+    st.subheader("Your learning operations, in focus")
+    st.caption("A clear view of registrations, attendance, and completion.")
     data = report(settings, report_filters(settings, clock, "overview_"), clock)
     summary_cards(data)
     st.divider()
     left, right = st.columns([3, 2])
     with left:
-        st.markdown("### Coming up")
+        st.markdown("### Upcoming sessions")
+        st.caption("The next scheduled sessions on your calendar")
         upcoming = [
             s
             for s in sessions(settings)
@@ -124,7 +126,8 @@ def overview(settings, clock):
         if not upcoming:
             st.info("No upcoming scheduled sessions in the current database.")
     with right:
-        st.markdown("### Operations checklist")
+        st.markdown("### Your workflow")
+        st.caption("From scheduling to a clear picture of completion")
         with st.container(border=True):
             st.write("1. Publish a future training session.")
             st.write("2. Register synthetic learners.")
@@ -594,7 +597,7 @@ def reports(settings, clock):
         ]
         if chart:
             st.bar_chart(
-                pd.DataFrame(chart), x="Department", y="Completion rate (%)", color="#087E8B"
+                pd.DataFrame(chart), x="Department", y="Completion rate (%)", color="#1768D6"
             )
             table(chart)
         st.caption(
@@ -607,7 +610,7 @@ def reports(settings, clock):
             for r in data["groups"]["month"]
         ]
         if chart:
-            st.line_chart(pd.DataFrame(chart), x="Month", y="Active registrations", color="#087E8B")
+            st.line_chart(pd.DataFrame(chart), x="Month", y="Active registrations", color="#1768D6")
             table(chart)
         st.caption(
             "Current active registrations grouped by session month in the displayed timezone; not registration-event history."
@@ -641,10 +644,11 @@ def reports(settings, clock):
 
 def main():
     st.set_page_config(page_title="LearnOps Flow", page_icon="◈", layout="wide")
+    st.markdown(APP_CSS, unsafe_allow_html=True)
     try:
         settings = Settings.from_env()
         st.sidebar.title("LearnOps Flow")
-        st.sidebar.caption("LEARNING OPERATIONS")
+        st.sidebar.caption("LEARNING OPERATIONS  /  WORKSPACE")
         area = st.sidebar.radio("Workspace", AREAS, key="area")
         role = st.sidebar.selectbox(
             "Demo role — no authentication", ["Coordinator", "Learner", "Manager"], key="role"
@@ -675,8 +679,9 @@ def main():
         st.sidebar.caption(
             "Synthetic data only. No real identities, authentication, or message delivery."
         )
+        st.caption("LEARNING OPERATIONS  /  " + area.upper())
         st.title("LearnOps Flow")
-        st.caption("SYNTHETIC DATA / PORTFOLIO DEMO · Learning Operations Automation Platform")
+        st.caption("Synthetic data · Portfolio demo · Simulated delivery")
         if "notice" in st.session_state:
             st.success(st.session_state.pop("notice"))
         coordinator = writable and role == "Coordinator"
